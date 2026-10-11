@@ -1,0 +1,32 @@
+{
+  "name": "nexus-ai-learning-os",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/clear-ports.js && concurrently -k -n api,web,next-door -c cyan,magenta,green \"npm:server\" \"vite --host 0.0.0.0 --port 4173 --strictPort\" \"npm:next-door\"",
+    "client": "node scripts/clear-ports.js && vite --host 0.0.0.0 --port 4173 --strictPort",
+    "server": "node server/index.js",
+    "next-door": "node server/next-door.js",
+    "build": "vite build",
+    "start": "concurrently -k -n api,next-door -c cyan,green \"npm:server\" \"npm:next-door\"",
+    "preview": "node scripts/clear-ports.js && vite preview --host 0.0.0.0 --port 4173 --strictPort",
+    "test": "node --test test/logic.test.mjs"
+  },
+  "dependencies": {
+    "@fontsource/material-symbols-outlined": "^5.3.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^9.2.1",
+    "tailwindcss": "^4.1.14",
+    "vite": "^8.3.0"
+  }
+}
